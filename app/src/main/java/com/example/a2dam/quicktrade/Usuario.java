@@ -5,27 +5,21 @@ import android.os.Parcelable;
 
 public class Usuario implements Parcelable {
 
-    private int ID;
+    private String nombreUser;
     private String nombre;
     private String apellido;
     private String email;
-    private int telefono;
+    private String direccion;
     private String password;
-    private boolean esVaron;
 
-    public Usuario(int ID, String nombre, String apellido, String email, int telefono, String password, boolean esVaron)
+    public Usuario(String nombreUser, String nombre, String apellido, String email, String direccion, String password)
     {
-        this.ID = ID;
+        this.nombreUser = nombreUser;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
-        this.telefono = telefono;
+        this.direccion = direccion;
         this.password = password;
-        this.esVaron = esVaron;
-    }
-
-    public int getID() {
-        return ID;
     }
 
     public String getNombre() {
@@ -40,20 +34,8 @@ public class Usuario implements Parcelable {
         return email;
     }
 
-    public int getTelefono() {
-        return telefono;
-    }
-
     public String getPassword() {
         return password;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    public boolean isEsVaron() {
-        return esVaron;
     }
 
     public void setNombre(String nombre) {
@@ -68,27 +50,34 @@ public class Usuario implements Parcelable {
         this.email = email;
     }
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public void setEsVaron(boolean esVaron) {
-        this.esVaron = esVaron;
+    public String getNombreUser() {
+        return nombreUser;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setNombreUser(String nombreUser) {
+        this.nombreUser = nombreUser;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     //Código de la parcelización
     protected Usuario(Parcel in) {
-        ID = in.readInt();
+        nombreUser = in.readString();
         nombre = in.readString();
         apellido = in.readString();
         email = in.readString();
-        telefono = in.readInt();
+        direccion = in.readString();
         password = in.readString();
-        esVaron = in.readByte() != 0x00;
     }
 
     @Override
@@ -98,13 +87,12 @@ public class Usuario implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(ID);
+        dest.writeString(nombreUser);
         dest.writeString(nombre);
         dest.writeString(apellido);
         dest.writeString(email);
-        dest.writeInt(telefono);
+        dest.writeString(direccion);
         dest.writeString(password);
-        dest.writeByte((byte) (esVaron ? 0x01 : 0x00));
     }
 
     @SuppressWarnings("unused")
