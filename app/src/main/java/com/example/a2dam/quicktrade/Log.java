@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
@@ -116,6 +117,9 @@ public class Log extends AppCompatActivity {
                             Intent i = new Intent(Log.this,Menu.class);
                             startActivity(i);
                         } else {
+                            Exception e = task.getException();
+                            android.util.Log.d("MIO",e.getMessage());
+
                             Toast.makeText(Log.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }

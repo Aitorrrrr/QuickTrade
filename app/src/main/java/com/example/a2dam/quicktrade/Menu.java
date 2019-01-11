@@ -13,6 +13,8 @@ import com.google.firebase.auth.FirebaseUser;
 public class Menu extends AppCompatActivity {
 
     private Button perfil;
+    private Button prodNuevo;
+
     private FirebaseAuth mAuth;
 
     @Override
@@ -32,5 +34,14 @@ public class Menu extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser usuario = mAuth.getCurrentUser();
         Log.d("MIO",usuario.getEmail());
+
+        prodNuevo = (Button) findViewById(R.id.btn_nuevoProd);
+        prodNuevo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Menu.this, nuevoProd.class);
+                startActivity(i);
+            }
+        });
     }
 }

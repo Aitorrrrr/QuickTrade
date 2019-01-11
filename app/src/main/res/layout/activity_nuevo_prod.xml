@@ -29,18 +29,25 @@
         android:layout_height="wrap_content"
         android:hint="Descripción"/>
 
-    <EditText
-        android:layout_marginTop="50dp"
-        android:id="@+id/Categoria"
+    <Spinner
+        android:id="@+id/categoriaProd_Nuevo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Categoria"/>
+        android:layout_height="wrap_content">
+    </Spinner>
 
     <EditText
         android:layout_marginTop="50dp"
-        android:id="@+id/Precio"
+        android:id="@+id/precioProd_Nuevo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Precio"
         android:inputType="numberDecimal"/>
+
+    <Button
+        android:layout_marginTop="50dp"
+        android:id="@+id/btn_guardarProd_Nuevo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        android:layout_gravity="center_horizontal"/>
 </LinearLayout>

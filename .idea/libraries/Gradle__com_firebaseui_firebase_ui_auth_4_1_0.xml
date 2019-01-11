@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.firebaseui:firebase-ui-auth-4.1.0">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-ui-auth-4.1.0.aar/c7f51465a5fbc326e0b3f9d7296d9c2e/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-ui-auth-4.1.0.aar/8e87ecb35c80cb820d71835e838550a0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-ui-auth-4.1.0.aar/c7f51465a5fbc326e0b3f9d7296d9c2e/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-ui-auth-4.1.0.aar/c7f51465a5fbc326e0b3f9d7296d9c2e/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-ui-auth-4.1.0.aar/8e87ecb35c80cb820d71835e838550a0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-ui-auth-4.1.0.aar/8e87ecb35c80cb820d71835e838550a0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

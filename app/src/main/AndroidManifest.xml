@@ -20,7 +20,8 @@
         <activity android:name=".Menu" />
         <activity android:name=".Perfil" />
         <activity android:name=".nuevoProd" />
-        <activity android:name=".BuscarProd"></activity>
+        <activity android:name=".BuscarProd" />
+        <activity android:name=".ProductosFav"></activity>
     </application>
 
 </manifest>
