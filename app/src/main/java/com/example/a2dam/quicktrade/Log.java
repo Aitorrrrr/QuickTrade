@@ -96,8 +96,8 @@ public class Log extends AppCompatActivity {
         {
             if (resultCode == RESULT_OK)
             {
-                Usuario aux = (Usuario) data.getExtras().getParcelable("user");
-                users.add(aux);
+                Toast.makeText(Log.this, "Cuenta creada con éxito.",
+                        Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -112,8 +112,9 @@ public class Log extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(Log.this, "Dentro",
-                                    Toast.LENGTH_SHORT).show();
+
+                            Intent i = new Intent(Log.this,Menu.class);
+                            startActivity(i);
                         } else {
                             Toast.makeText(Log.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();

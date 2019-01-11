@@ -19,7 +19,8 @@
         <activity android:name=".SignUp" />
         <activity android:name=".Menu" />
         <activity android:name=".Perfil" />
-        <activity android:name=".nuevoProd"></activity>
+        <activity android:name=".nuevoProd" />
+        <activity android:name=".BuscarProd"></activity>
     </application>
 
 </manifest>

@@ -7,16 +7,21 @@ public class Usuario implements Parcelable {
 
     private String nombreUser;
     private String nombre;
-    private String apellido;
+    private String apellidos;
     private String email;
     private String direccion;
     private String password;
+
+    public Usuario()
+    {
+
+    }
 
     public Usuario(String nombreUser, String nombre, String apellido, String email, String direccion, String password)
     {
         this.nombreUser = nombreUser;
         this.nombre = nombre;
-        this.apellido = apellido;
+        this.apellidos = apellido;
         this.email = email;
         this.direccion = direccion;
         this.password = password;
@@ -27,7 +32,7 @@ public class Usuario implements Parcelable {
     }
 
     public String getApellido() {
-        return apellido;
+        return apellidos;
     }
 
     public String getEmail() {
@@ -43,7 +48,7 @@ public class Usuario implements Parcelable {
     }
 
     public void setApellido(String apellido) {
-        this.apellido = apellido;
+        this.apellidos = apellido;
     }
 
     public void setEmail(String email) {
@@ -74,7 +79,7 @@ public class Usuario implements Parcelable {
     protected Usuario(Parcel in) {
         nombreUser = in.readString();
         nombre = in.readString();
-        apellido = in.readString();
+        apellidos = in.readString();
         email = in.readString();
         direccion = in.readString();
         password = in.readString();
@@ -89,7 +94,7 @@ public class Usuario implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(nombreUser);
         dest.writeString(nombre);
-        dest.writeString(apellido);
+        dest.writeString(apellidos);
         dest.writeString(email);
         dest.writeString(direccion);
         dest.writeString(password);
@@ -107,4 +112,16 @@ public class Usuario implements Parcelable {
             return new Usuario[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nombreUser='" + nombreUser + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", email='" + email + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

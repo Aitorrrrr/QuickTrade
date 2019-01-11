@@ -12,9 +12,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.common.util.JsonUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.*;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUp extends AppCompatActivity {
 
@@ -29,6 +32,7 @@ public class SignUp extends AppCompatActivity {
     private EditText pw;
 
     private FirebaseAuth mAuth;
+    private DatabaseReference bbdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,8 @@ public class SignUp extends AppCompatActivity {
         tel = (EditText) this.findViewById(R.id.input_telefono);
         pw = (EditText) this.findViewById(R.id.input_password);
 
+        bbdd = FirebaseDatabase.getInstance().getReference("usuarios");
+
         enviar = (Button) this.findViewById(R.id.enviar);
         enviar.setOnClickListener(new View.OnClickListener()
         {
@@ -52,14 +58,6 @@ public class SignUp extends AppCompatActivity {
                 String password = pw.getText().toString();
 
                 registrar(mail, password);
-
-                /* Usuario aux = new Usuario(Integer.parseInt(user.getText().toString()), nom.getText().toString(), apell.getText().toString(), email.getText().toString(), Integer.parseInt(tel.getText().toString()), pw.getText().toString(), true);
-
-                Intent i = new Intent();
-                i.putExtra("user", aux);
-
-                setResult(RESULT_OK, i);
-                finish(); */
             }
         });
 
@@ -75,11 +73,12 @@ public class SignUp extends AppCompatActivity {
         });
     }
 
-    public void registrar(String email, String password)
+    public void registrar(String mail, String password)
     {
         mAuth = FirebaseAuth.getInstance();
+        Log.d("MIO",bbdd.toString());
 
-        mAuth.createUserWithEmailAndPassword(email, password)
+        mAuth.createUserWithEmailAndPassword(mail, password)
                 .addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>()
                 {
                     @Override
@@ -87,17 +86,26 @@ public class SignUp extends AppCompatActivity {
                     {
                         if (task.isSuccessful())
                         {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(SignUp.this, "Authentication successfull."+user.getUid(),
-                                    Toast.LENGTH_SHORT).show();
+                            //bbdd.push().getKey();
+                            FirebaseUser usuario = mAuth.getCurrentUser();
+                            Usuario aux = new Usuario(user.getText().toString(), nom.getText().toString(), apell.getText().toString(), email.getText().toString(), tel.getText().toString(), pw.getText().toString());
+                            String id = usuario.getUid();
+                            Log.d("MIO",bbdd.child(id).toString());
+                            bbdd.child(usuario.getUid()).setValue(aux);
+
+                            setResult(RESULT_OK);
+                            finish();
                         }
                         else
                         {
-                            FirebaseAuthException e = (FirebaseAuthException )task.getException();
+                            FirebaseAuthException e = (FirebaseAuthException)task.getException();
                             Log.d("MIO",e.getMessage());
                             Log.d("MIO",e.getErrorCode());
                             Toast.makeText(SignUp.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
+
+                            setResult(RESULT_OK);
+                            finish();
                         }
                     }
                 });
